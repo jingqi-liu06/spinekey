@@ -1,6 +1,6 @@
 auto_scale_lr = dict(base_batch_size=32, enable=True)
 backend_args = None
-data_root = '/hdd/srt19/data/xray/xray_yuanshi/'
+data_root = '../data/full/'
 dataset_type = 'CocoDataset'
 default_hooks = dict(
     checkpoint=dict(
@@ -24,7 +24,7 @@ env_cfg = dict(
     dist_cfg=dict(backend='nccl'),
     mp_cfg=dict(mp_start_method='fork', opencv_num_threads=0))
 launcher = 'pytorch'
-load_from = '/hdd/srt19/model/cascade_mask_r-cnn/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco_20210719_210311-d3e64ba0.pth'
+load_from = '../checkpoints/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco.pth'
 log_level = 'INFO'
 log_processor = dict(by_epoch=True, type='LogProcessor', window_size=50)
 model = dict(
@@ -34,7 +34,7 @@ model = dict(
         frozen_stages=1,
         groups=64,
         init_cfg=dict(
-            checkpoint='/hdd/srt19/model/resnet/resnext101_64x4d-ee2c6f71.pth',
+            checkpoint='../checkpoints/resnext101_64x4d-ee2c6f71.pth',
             type='Pretrained'),
         norm_cfg=dict(requires_grad=True, type='BN'),
         norm_eval=True,
@@ -339,7 +339,7 @@ test_dataloader = dict(
         ann_file='det_test.json',
         backend_args=None,
         data_prefix=dict(img='images/'),
-        data_root='/hdd/srt19/data/xray/xray_yuanshi/',
+        data_root='../data/full/',
         metainfo=dict(classes=('vertebra', ), palette=[
             (
                 220,
@@ -371,7 +371,7 @@ test_dataloader = dict(
     persistent_workers=True,
     sampler=dict(shuffle=False, type='DefaultSampler'))
 test_evaluator = dict(
-    ann_file='/hdd/srt19/data/xray/xray_yuanshi/det_test.json',
+    ann_file='../data/full/det_test.json',
     backend_args=None,
     metric=[
         'bbox',
@@ -404,7 +404,7 @@ train_dataloader = dict(
             ann_file='det_train.json',
             backend_args=None,
             data_prefix=dict(img='images/'),
-            data_root='/hdd/srt19/data/xray/xray_yuanshi/',
+            data_root='../data/full/',
             filter_cfg=dict(filter_empty_gt=True, min_size=32),
             metainfo=dict(classes=('vertebra', ), palette=[
                 (
@@ -464,7 +464,7 @@ val_dataloader = dict(
         ann_file='det_test.json',
         backend_args=None,
         data_prefix=dict(img='images/'),
-        data_root='/hdd/srt19/data/xray/xray_yuanshi/',
+        data_root='../data/full/',
         metainfo=dict(classes=('vertebra', ), palette=[
             (
                 220,
@@ -496,7 +496,7 @@ val_dataloader = dict(
     persistent_workers=True,
     sampler=dict(shuffle=False, type='DefaultSampler'))
 val_evaluator = dict(
-    ann_file='/hdd/srt19/data/xray/xray_yuanshi/det_test.json',
+    ann_file='../data/full/det_test.json',
     backend_args=None,
     metric=[
         'bbox',
@@ -514,4 +514,4 @@ visualizer = dict(
         dict(type='LocalVisBackend'),
         dict(type='TensorboardVisBackend'),
     ])
-work_dir = '/hdd/srt19/work_dir/vertebra_det/quanjizhui_cascade'
+work_dir = '../work_dir/full/'

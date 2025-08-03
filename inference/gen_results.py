@@ -65,11 +65,11 @@ def run_vertebrae_detection_pipeline(
 if __name__ == "__main__":
     # Example usage
     config = {
-        'images_dir': "/hdd/srt19/data/xray/compression_fracture/压缩性骨折图片/疑似骨折全脊柱_images",  # Replace with your images directory
-        'cfg_det_path': "/home/srt19/jingqi/ver_det/wkdir-quanjizhui_cascade/det_cascade-mask-rcnn.py",  # Replace with your config file path
-        'ckpt_det_path': "/home/srt19/jingqi/ver_det/wkdir-quanjizhui_cascade/best_coco_segm_mAP_epoch_5.pth",  # Replace with your checkpoint path
-        'anns_path': "/hdd/srt19/data/xray/compression_fracture/压缩性骨折json/疑似骨折全脊柱.json",  # Replace with your annotation file path
-        'output_dir': "/hdd/srt19/data/疑似骨折全脊柱/",  # Replace with your desired output directory
+        'images_dir': "../data/full",  # Replace with your images directory
+        'cfg_det_path': "inference.py",  # Replace with your config file path
+        'ckpt_det_path': "../checkpoints/full/full_inference.pth",  # Replace with your checkpoint path
+        'anns_path': "../data/full/.json",  # Replace with your annotation file path
+        'output_dir': "../data/full/",  # Replace with your desired output directory
         'cuda_id': 5,
         'iou_threshold': 0.5
     }
