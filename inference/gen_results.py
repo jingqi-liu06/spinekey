@@ -13,27 +13,27 @@ def run_vertebrae_detection_pipeline(
     iou_threshold=0.5
 ):
     """
-    运行完整的脊椎检测流程
+    Run complete vertebrae detection pipeline
     
     Args:
-        images_dir: 输入图片目录
-        cfg_det_path: 检测模型配置文件路径
-        ckpt_det_path: 检测模型权重文件路径
-        anns_path: 原始标注文件路径
-        output_dir: 输出目录
-        cuda_id: GPU设备ID
-        iou_threshold: IOU阈值
+        images_dir: Input images directory
+        cfg_det_path: Detection model configuration file path
+        ckpt_det_path: Detection model checkpoint file path
+        anns_path: Original annotation file path
+        output_dir: Output directory
+        cuda_id: GPU device ID
+        iou_threshold: IOU threshold
     """
-    # 创建输出目录
+    # Create output directory
     os.makedirs(output_dir, exist_ok=True)
     
-    # 设置输出文件路径
+    # Set output file paths
     results_path = os.path.join(output_dir, 'results.json')
     gts_path = os.path.join(output_dir, 'gts.json')
     iou_results_path = os.path.join(output_dir, 'iou_results.json')
     
-    # 1. 生成检测结果
-    print("正在生成检测结果...")
+    # 1. Generate detection results
+    print("Generating detection results...")
     results = detect_vertebrae_det(
         images_dir=images_dir,
         cfg_det_path=cfg_det_path,
@@ -42,12 +42,12 @@ def run_vertebrae_detection_pipeline(
         cuda_id=cuda_id
     )
     
-    # 2. 生成真实标注（ground truth）
-    print("正在生成真实标注...")
+    # 2. Generate ground truth annotations
+    print("Generating ground truth annotations...")
     create_gts(anns_path, gts_path)
     
-    # 3. 计算IOU并生成最终结果
-    print("正在计算IOU...")
+    # 3. Calculate IOU and generate final results
+    print("Calculating IOU...")
     process_annotations(
         gts_path=gts_path,
         results_path=results_path,
@@ -55,7 +55,7 @@ def run_vertebrae_detection_pipeline(
         iou_threshold=iou_threshold
     )
     
-    print(f"处理完成！结果已保存到: {output_dir}")
+    print(f"Processing completed! Results saved to: {output_dir}")
     return {
         'results_path': results_path,
         'gts_path': gts_path,
@@ -63,13 +63,13 @@ def run_vertebrae_detection_pipeline(
     }
 
 if __name__ == "__main__":
-    # 示例用法
+    # Example usage
     config = {
-        'images_dir': "/hdd/srt19/data/xray/compression_fracture/压缩性骨折图片/疑似骨折全脊柱_images",  # 替换为您的图片目录
-        'cfg_det_path': "/home/srt19/jingqi/ver_det/wkdir-quanjizhui_cascade/det_cascade-mask-rcnn.py",  # 替换为您的配置文件路径
-        'ckpt_det_path': "/home/srt19/jingqi/ver_det/wkdir-quanjizhui_cascade/best_coco_segm_mAP_epoch_5.pth",  # 替换为您的检查点路径
-        'anns_path': "/hdd/srt19/data/xray/compression_fracture/压缩性骨折json/疑似骨折全脊柱.json",  # 替换为您的标注文件路径
-        'output_dir': "/hdd/srt19/data/疑似骨折全脊柱/",  # 替换为您想要保存结果的目录
+        'images_dir': "/hdd/srt19/data/xray/compression_fracture/压缩性骨折图片/疑似骨折全脊柱_images",  # Replace with your images directory
+        'cfg_det_path': "/home/srt19/jingqi/ver_det/wkdir-quanjizhui_cascade/det_cascade-mask-rcnn.py",  # Replace with your config file path
+        'ckpt_det_path': "/home/srt19/jingqi/ver_det/wkdir-quanjizhui_cascade/best_coco_segm_mAP_epoch_5.pth",  # Replace with your checkpoint path
+        'anns_path': "/hdd/srt19/data/xray/compression_fracture/压缩性骨折json/疑似骨折全脊柱.json",  # Replace with your annotation file path
+        'output_dir': "/hdd/srt19/data/疑似骨折全脊柱/",  # Replace with your desired output directory
         'cuda_id': 5,
         'iou_threshold': 0.5
     }
