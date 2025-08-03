@@ -5,7 +5,7 @@
 
 # Default Configuration
 IMAGES_DIR="/data/images"
-CFG_DET_PATH="/inference/det_cascade-mask-rcnn.py"
+CFG_DET_PATH="/inference/inference.py"
 CKPT_DET_PATH="/checkpoints/full_inference.pth"
 ANNS_PATH="/data/annotations.json"
 OUTPUT_DIR="/output/"
