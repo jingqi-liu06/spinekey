@@ -234,7 +234,7 @@ model = dict(
 # dataset settings
 dataset_type = "CocoDataset" # user-defined dataset type
 # dataset_type = "CocoDataset"  --- IGNORE ---
-data_root = "../data/xray_yuanshi/"  # change to your dataset path
+data_root = "../data/full/"  # change to your dataset path
 backend_args = None
 
 train_pipeline = [
