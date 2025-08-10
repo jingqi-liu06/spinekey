@@ -305,7 +305,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 For questions or suggestions, please contact us through:
 
-- Email: <jingqi.liu03@outlook.com>
+- If you have any questions about the cal-dis_R/cal-dis.R file, please contact <wdingben@bjmu.edu.cn>
+- For other questions, please contact <jingqi.liu03@outlook.com>
 - GitHub Issues: [Project Issues Page](https://github.com/yourusername/spinekey/issues)
 
 ## References
