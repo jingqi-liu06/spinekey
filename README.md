@@ -1,18 +1,13 @@
 # SpineKey: Spine Vertebra Detection and Keypoint Analysis System
 
-## This Repository is still under construction and undergoing ongoing maintenance
-
+## <span style="color: red">This Repository is still under construction and undergoing ongoing maintenance</span>
 ## Project Overview
 
 SpineKey is a deep learning-based spine vertebra detection and keypoint analysis system that uses Cascade R-CNN architecture for vertebra detection and provides a complete training, inference, and evaluation pipeline.
 
 ## Environment Requirements
 
-- Python 3.8+
-- PyTorch 1.8+
-- MMDetection 3.0+
-- CUDA 11.0+ (Recommended)
-- Other dependencies see `requirements.txt`
+The environment for this project is based on [MMDetection](https://github.com/open-mmlab/mmdetection). Please refer to the official documentation for installation instructions.
 
 ## Directory Structure
 
@@ -21,6 +16,7 @@ SpineKey/
 ├── data/                    # Data directory
 │   ├── full/               # Complete dataset
 │   │   ├── images/         # Image files
+│   │   │   └── images/     # Image files
 │   │   ├── det_train.json  # Training annotation file
 │   │   └── det_test.json   # Testing annotation file
 │   └── partial/            # Partial dataset
@@ -70,12 +66,13 @@ Before starting training or inference, please download the pre-trained model wei
 
 ### 1. Pre-trained Backbone Network Weights
 
+Please go to [ModelScope](https://modelscope.cn/models/kyan007/spinekey)
 ```bash
 # Create checkpoints directory
 mkdir -p checkpoints
 
 # Download ResNeXt-101 pre-trained weights
-wget https://download.openmmlab.com/mmdetection/v2.0/resnext/resnext101_64x4d.pth -P checkpoints/
+modelscope download --model 'kyan007/spinekey' --local_dir 'path/to/dir'
 ```
 
 ### 2. Complete Model Weights
@@ -154,11 +151,11 @@ Before performing inference, you need to confirm and modify the path configurati
 
 ```bash
 # Edit inference.sh, modify the following default paths
-IMAGES_DIR="/path/to/your/images"          # Test image directory
-CFG_DET_PATH="/inference/inference.py"     # Inference configuration file
-CKPT_DET_PATH="/checkpoints/full_inference.pth"  # Model weight file
-ANNS_PATH="/data/annotations.json"         # Annotation file path
-OUTPUT_DIR="/output/"                      # Output directory
+IMAGES_DIR="data/full/origin"              # Test image directory
+CFG_DET_PATH="inference/inference.py"      # Inference configuration file
+CKPT_DET_PATH="checkpoints/full_inference.pth"  # Model weight file
+ANNS_PATH="data/full/annotations.json"     # Annotation file path
+OUTPUT_DIR="data/full/output/"             # Output directory
 ```
 
 ### 2. Execute Inference
@@ -308,8 +305,20 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 For questions or suggestions, please contact us through:
 
-- Email: <your.email@example.com>
+- Email: <jingqi.liu03@outlook.com>
 - GitHub Issues: [Project Issues Page](https://github.com/yourusername/spinekey/issues)
+
+## References
+
+```bibtex
+@misc{spinekey2024,
+  title={SpineKey: Vertebrae Detection and Keypoint Analysis System},
+  author={Jingqi Liu, Dingben Wang and et al.},
+  year={2025},
+  url={https://github.com/yourusername/spinekey},
+  note={Available at: \url{https://github.com/yourusername/spinekey}}
+}
+```
 
 ## Changelog
 

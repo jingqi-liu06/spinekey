@@ -7,7 +7,7 @@
 IMAGES_DIR="data/full/origin"
 CFG_DET_PATH="inference/inference.py"
 CKPT_DET_PATH="checkpoints/full_inference.pth"
-ANNS_PATH="data/full/annotations.json" # 这是需要检测的数据的标注的json文件
+ANNS_PATH="data/full/annotations.json" # This is the annotation json file for the data to be detected
 OUTPUT_DIR="data/full/output/"
 CUDA_ID=5 # using GPU ID 
 IOU_THRESHOLD=0.5
