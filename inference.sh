@@ -4,12 +4,12 @@
 # This script runs the complete vertebrae detection pipeline
 
 # Default Configuration
-IMAGES_DIR="/data/images"
-CFG_DET_PATH="/inference/inference.py"
-CKPT_DET_PATH="/checkpoints/full_inference.pth"
-ANNS_PATH="/data/annotations.json"
-OUTPUT_DIR="/output/"
-CUDA_ID=5
+IMAGES_DIR="data/full/origin"
+CFG_DET_PATH="inference/inference.py"
+CKPT_DET_PATH="checkpoints/full_inference.pth"
+ANNS_PATH="data/full/annotations.json" # 这是需要检测的数据的标注的json文件
+OUTPUT_DIR="data/full/output/"
+CUDA_ID=5 # using GPU ID 
 IOU_THRESHOLD=0.5
 
 # Parse command line arguments

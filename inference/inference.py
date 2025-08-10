@@ -1,6 +1,6 @@
 auto_scale_lr = dict(base_batch_size=32, enable=True)
 backend_args = None
-data_root = '../data/full/'
+data_root = '../data/full/origin/'
 dataset_type = 'CocoDataset'
 default_hooks = dict(
     checkpoint=dict(
@@ -339,7 +339,7 @@ test_dataloader = dict(
         ann_file='det_test.json',
         backend_args=None,
         data_prefix=dict(img='images/'),
-        data_root='../data/full/',
+        data_root='../data/full/origin/',
         metainfo=dict(classes=('vertebra', ), palette=[
             (
                 220,
@@ -371,7 +371,7 @@ test_dataloader = dict(
     persistent_workers=True,
     sampler=dict(shuffle=False, type='DefaultSampler'))
 test_evaluator = dict(
-    ann_file='../data/full/det_test.json',
+    ann_file='../data/full/origin/det_test.json',
     backend_args=None,
     metric=[
         'bbox',
@@ -404,7 +404,7 @@ train_dataloader = dict(
             ann_file='det_train.json',
             backend_args=None,
             data_prefix=dict(img='images/'),
-            data_root='../data/full/',
+            data_root='../data/full/origin/',
             filter_cfg=dict(filter_empty_gt=True, min_size=32),
             metainfo=dict(classes=('vertebra', ), palette=[
                 (
@@ -464,7 +464,7 @@ val_dataloader = dict(
         ann_file='det_test.json',
         backend_args=None,
         data_prefix=dict(img='images/'),
-        data_root='../data/full/',
+        data_root='../data/full/origin/',
         metainfo=dict(classes=('vertebra', ), palette=[
             (
                 220,
@@ -496,7 +496,7 @@ val_dataloader = dict(
     persistent_workers=True,
     sampler=dict(shuffle=False, type='DefaultSampler'))
 val_evaluator = dict(
-    ann_file='../data/full/det_test.json',
+    ann_file='../data/full/origin/det_test.json',
     backend_args=None,
     metric=[
         'bbox',
