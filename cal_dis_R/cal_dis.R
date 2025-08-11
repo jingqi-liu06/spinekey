@@ -15,7 +15,7 @@ out1$sort <- c("T1","T2","T3","T4","T5","T6","T7","T8","T9","T10","T11","T12","L
 out2 <- data.frame(matrix(double(),17,5))
 colnames(out2) <- c("sort","Mean","Var","CI","IR")
 out2$sort <- c("T1","T2","T3","T4","T5","T6","T7","T8","T9","T10","T11","T12","L1","L2","L3","L4","L5")
-#建立输出集1\2
+# Create output sets 1 and 2
 
 df1 <- data.frame(matrix(numeric(),800,17))
 colnames(df1) <- c("T1","T2","T3","T4","T5","T6","T7","T8","T9","T10","T11","T12","L1","L2","L3","L4","L5")
@@ -24,7 +24,7 @@ for(k in 8:24){
     df1[[k-7]][[i]] <- (json_data[[2]][[i]][[2]][[k]]+json_data[[2]][[i]][[3]][[k]])/(json_data[[2]][[i]][[2]][[7]]+json_data[[2]][[i]][[3]][[7]])
     }
 }
-#计算各除以C7的值
+# Calculate values divided by C7
 
 out1$Mean <- c(0)
 for(i in 1:17){
@@ -33,7 +33,7 @@ for(i in 1:17){
   }
   out1$Mean[[i]] <- out1$Mean[[i]]/800
 }
-#计算平均值
+# Calculate mean values
 
 for(i in 1:16){
   out1$IR[i] <- out1$Mean[i+1]-out1$Mean[i]
@@ -42,12 +42,12 @@ for(i in 1:16){
 for(i in 1:17){
   out1$Var[[i]] <- var(df1[[i]])
 }
-#计算斜率及方差
+# Calculate slope and variance
 
 shapiro.test(df1$T1)
-#正态性检验
+# Normality test
 wilcox.test(df1$T1,df1$T2)
-#wilcox检验
+# Wilcoxon test
 
 df2 <- data.frame(matrix(numeric(),800,17))
 colnames(df2) <- c("T1","T2","T3","T4","T5","T6","T7","T8","T9","T10","T11","T12","L1","L2","L3","L4","L5")
@@ -80,7 +80,7 @@ for(i in 1:17){
   out1$CI[[i]] <- t.test(df1[i], alternative = "greater")$conf.int[[1]]
   out2$CI[[i]] <- t.test(df2[i], alternative = "greater")$conf.int[[1]]
 }
-#计算95%置信区间的左界
+# Calculate the lower bound of the 95% confidence interval
 
 write.csv(out2,file = "out2.csv",row.names = FALSE)
 
@@ -97,17 +97,17 @@ CW<-"C:/Users/11215/Desktop/算死我吧/data/腰椎压缩性骨折全脊柱.jso
 data_CW<-fromJSON(paste(readLines(CW),collaspse=""))
 CP<-"C:/Users/11215/Desktop/算死我吧/data/腰椎压缩性骨折局部.json"
 data_CP<-fromJSON(paste(readLines(CP),collaspse=""))
-#导入数据
+# Import data
 
 outsf <- data.frame(matrix(double(0),17,5))
 colnames(outsf) <- c("sort","Mean","Var","CI","IR")
 outsf$sort <- c("T1","T2","T3","T4","T5","T6","T7","T8","T9","T10","T11","T12","L1","L2","L3","L4","L5")
-#建立输出集
+# Create output set
 
 dfsf <- data.frame(matrix(numeric(),500,17))
 colnames(dfsf) <- c("T1","T2","T3","T4","T5","T6","T7","T8","T9","T10","T11","T12","L1","L2","L3","L4","L5")
 dfsf[1,] <- 1
-#建立数据集
+# Create dataset
 
 for(i in 2:1455){
   if(psf$Filename[[i]] == psf$Filename[[i-1]] && psf$Filename[[i]] == psf$Filename[[i+1]]){
@@ -146,7 +146,7 @@ for (i in 1:length(data_TW[[1]])) {
     x[[i]] <- FALSE
 }
 
-#检验是否为3脊柱节段
+# Check if there are 3 spinal segments
 
 for (i in 1:length(data_TW[[1]])) {
   if(x[[i]] == T){
@@ -218,7 +218,7 @@ for(i in 1:17){
   outsf$Mean[[i]] <- (sum(dfsf[i],na.rm = TRUE)-dfsf[[i]][[1]])/(dfsf[[i]][[1]]-1)
   outsf$Var[[i]] <- var(dfsf[[i]][-1],na.rm = TRUE)
 }
-#计算平均值、方差
+# Calculate mean and variance
 
 dfsf_subset <- dfsf[2:nrow(dfsf),]
 p<-0
@@ -228,7 +228,7 @@ for(i in 6:17){
   }
 }
 p
-#结果:L1/L2不正态，其他均正态
+# Result: L1/L2 are not normal, others are normal
 
 for(i in 6:17){
   outsf$CI[[i]] <- t.test(dfsf_subset[i], alternative = "less")$conf.int[[2]]
@@ -240,12 +240,12 @@ write.csv(outsf,file = "outsf.csv",row.names = F)
 outssf <- data.frame(matrix(double(0),17,5))
 colnames(outssf) <- c("sort","Mean","Var","CI1","CI2")
 outssf$sort <- c("T1","T2","T3","T4","T5","T6","T7","T8","T9","T10","T11","T12","L1","L2","L3","L4","L5")
-#建立输出集
+# Create output set
 
 dfssf <- data.frame(matrix(numeric(),500,17))
 colnames(dfssf) <- c("T1","T2","T3","T4","T5","T6","T7","T8","T9","T10","T11","T12","L1","L2","L3","L4","L5")
 dfssf[1,] <- 1
-#建立数据集
+# Create dataset
 
 for(i in 2:843){
   if(sps$Filename[[i]] == sps$Filename[[i-1]] && sps$Filename[[i]] == sps$Filename[[i+1]]){
@@ -281,7 +281,7 @@ for(i in 1:17){
   outssf$Mean[[i]] <- (sum(dfssf[i],na.rm = TRUE)-dfssf[[i]][[1]])/(dfssf[[i]][[1]]-1)
   outssf$Var[[i]] <- var(dfssf[[i]][-1],na.rm = TRUE)
 }
-#计算平均值、方差
+# Calculate mean and variance
 
 dfssf_subset <- dfssf[2:nrow(dfssf),]
 p<-0
@@ -291,7 +291,7 @@ for(i in 10:17){
   }
 }
 p
-#结果:T10\12\L1\L2不正态，其他均正态
+# Result: T10\12\L1\L2 are not normal, others are normal
 
 for(i in 10:17){
   outssf$CI1[[i]] <- t.test(dfssf_subset[i])$conf.int[[1]]
@@ -441,7 +441,7 @@ for (i in 1:5842) {
   }
 }
 y
-#计算95置信区间
+# Calculate 95% confidence interval
 
 x <- 0
 y <- 0
@@ -590,7 +590,7 @@ Recall <- count(dfplot_group[dfplot_group$label == "TP" & dfplot_group$layer == 
 Recall
 
 range(dfplot[dfplot$group == "fracture",]$value)
-t.test(dfsf_subset[1],dfssf_subset[1])
+t.test(dfsf_subset[1],dfsf_subset[1])
 wilcox.test(dfssf_subset$T11,dfsf_subset$T11)
 mean(dfplot[dfplot$group == "normal",]$value)
 median(dfplot[dfplot$group == "normal",]$value)

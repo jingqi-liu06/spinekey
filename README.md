@@ -259,17 +259,6 @@ nvidia-smi
 export CUDA_VISIBLE_DEVICES=0,1  # Specify GPUs to use
 ```
 
-### 4. Dependency Package Version Conflicts
-
-```bash
-# Create virtual environment
-conda create -n spinekey python=3.8
-conda activate spinekey
-
-# Install MMDetection
-pip install mmdet
-```
-
 ## Performance Optimization Recommendations
 
 ### 1. Training Optimization
