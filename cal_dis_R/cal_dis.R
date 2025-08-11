@@ -82,22 +82,26 @@ for(i in 1:17){
 }
 # Calculate the lower bound of the 95% confidence interval
 
+# Dummy file
 write.csv(out2,file = "out2.csv",row.names = FALSE)
 
-setwd("C:/Users/11215/Desktop/算死我吧/data2")
-wsf <- read.csv("wholespine.csv")
-psf <- read.csv("partlyspine.csv")
-sws <- read.csv("suswholespine.csv")
-sps <- read.csv("suspartlyspine.csv")
-TW<-"C:/Users/11215/Desktop/算死我吧/data/胸椎压缩性骨折全脊柱.json"
-data_TW<-fromJSON(paste(readLines(TW),collaspse=""))
-TP<-"C:/Users/11215/Desktop/算死我吧/data/胸椎压缩性骨折局部.json"
-data_TP<-fromJSON(paste(readLines(TP),collaspse=""))
-CW<-"C:/Users/11215/Desktop/算死我吧/data/腰椎压缩性骨折全脊柱.json"
-data_CW<-fromJSON(paste(readLines(CW),collaspse=""))
-CP<-"C:/Users/11215/Desktop/算死我吧/data/腰椎压缩性骨折局部.json"
-data_CP<-fromJSON(paste(readLines(CP),collaspse=""))
 # Import data
+# GT files
+setwd("../file/gt/")
+wsf <- read.csv("wholespine.csv")  # GT: whole spine data
+psf <- read.csv("partlyspine.csv") # GT: partly spine data
+sws <- read.csv("suswholespine.csv") # GT: suspected whole spine data
+sps <- read.csv("suspartlyspine.csv") # GT: suspected partly spine data
+# results files
+TW<-"../data/full/output/wholespine.json" # whole spine data
+data_TW<-fromJSON(paste(readLines(TW),collaspse="")) 
+TP<-"../data/full/output/partlyspine.json" # partly spine data
+data_TP<-fromJSON(paste(readLines(TP),collaspse=""))
+CW<-"../data/partial/output/suswholespine.json" # suspected whole spine data
+data_CW<-fromJSON(paste(readLines(CW),collaspse=""))
+CP<-"../data/partial/output/suspartlyspine.json" # suspected partly spine data
+data_CP<-fromJSON(paste(readLines(CP),collaspse=""))
+
 
 outsf <- data.frame(matrix(double(0),17,5))
 colnames(outsf) <- c("sort","Mean","Var","CI","IR")
