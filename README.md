@@ -7,7 +7,7 @@ SpineKey is a deep learning-based spine vertebra detection and keypoint analysis
 
 ## Environment Requirements
 
-The environment for this project is based on [MMDetection](https://github.com/open-mmlab/mmdetection). Please refer to the official documentation for installation instructions.
+The environment for this project is based on **[MMDetection](https://github.com/open-mmlab/mmdetection)**. Please refer to the official documentation for installation instructions.
 
 ## Directory Structure
 
