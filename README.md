@@ -296,7 +296,7 @@ For questions or suggestions, please contact us through:
 
 - If you have any questions about the cal-dis_R/cal-dis.R file, please contact <wdingben@bjmu.edu.cn>
 - For other questions, please contact <jingqi.liu03@outlook.com>
-- GitHub Issues: [Project Issues Page](https://github.com/yourusername/spinekey/issues)
+- GitHub Issues: [Project Issues Page](https://github.com/jingqi-liu06/spinekey/issues)
 
 ## References
 
