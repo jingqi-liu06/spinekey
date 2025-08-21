@@ -305,8 +305,8 @@ For questions or suggestions, please contact us through:
   title={SpineKey: Vertebrae Detection and Keypoint Analysis System},
   author={Jingqi Liu, Dingben Wang and et al.},
   year={2025},
-  url={https://github.com/yourusername/spinekey},
-  note={Available at: \url{https://github.com/yourusername/spinekey}}
+  url={[https://github.com/yourusername/spinekey](https://github.com/jingqi-liu06/spinekey)},
+  note={Available at: \url{https://github.com/jingqi-liu06/spinekey}}
 }
 ```
 
